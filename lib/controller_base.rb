@@ -20,7 +20,8 @@ class ControllerBase
 
   # Set the response status code and header
   def redirect_to(url)
-
+    @res.location = url
+    @res.status = 302
   end
 
   # Populate the response with content.
