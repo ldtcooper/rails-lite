@@ -20,8 +20,10 @@ class ControllerBase
 
   # Set the response status code and header
   def redirect_to(url)
+    raise Exception.new("Double render detected") if already_built_response?
     @res.location = url
     @res.status = 302
+    @already_built_response = true
   end
 
   # Populate the response with content.
